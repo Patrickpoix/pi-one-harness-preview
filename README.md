@@ -2,7 +2,7 @@
 
 **A partial public source preview of Pi-One, an independently developed AI Agent Harness built on top of the open-source Pi ecosystem.**
 
-> **Preview status:** this repository is intentionally incomplete and is **not the current Pi-One development branch**. Active development is continuing in a private working tree. The full public source will be regenerated from the converged latest baseline after that work is complete.
+> **Preview status:** this repository is intentionally incomplete and is **not the current Pi-One development branch**. Active development is continuing on private development branches in the main Pi-One repository. The full public source will be regenerated from the converged latest baseline after that work is complete.
 
 This repository exists so reviewers can inspect representative Harness code without treating an in-progress development snapshot as a finished release.
 
