@@ -1,0 +1,148 @@
+const EXPERIMENT_PROFILE_ENV = "PI_ONE_EXPERIMENT_PROFILE";
+
+const PROFILE_DEFINITIONS = Object.freeze({
+	"production-current": Object.freeze({
+		name: "production-current",
+		experiment: false,
+		routing: true,
+		durable: true,
+		execution: true,
+		memory: true,
+		learning: true,
+		external: true,
+		computerUse: true,
+		forceDurable: false,
+		qualityClosure: false,
+	}),
+	"control-shell": Object.freeze({
+		name: "control-shell",
+		experiment: true,
+		routing: false,
+		durable: false,
+		execution: false,
+		memory: false,
+		learning: false,
+		external: false,
+		computerUse: false,
+		forceDurable: false,
+		qualityClosure: false,
+	}),
+	thin: Object.freeze({
+		name: "thin",
+		experiment: true,
+		routing: true,
+		durable: false,
+		execution: false,
+		memory: false,
+		learning: false,
+		external: false,
+		computerUse: false,
+		forceDurable: false,
+		qualityClosure: false,
+	}),
+	work: Object.freeze({
+		name: "work",
+		experiment: true,
+		routing: true,
+		durable: true,
+		execution: false,
+		memory: false,
+		learning: false,
+		external: false,
+		computerUse: false,
+		forceDurable: true,
+		qualityClosure: false,
+	}),
+	execute: Object.freeze({
+		name: "execute",
+		experiment: true,
+		routing: true,
+		durable: true,
+		execution: true,
+		memory: false,
+		learning: false,
+		external: false,
+		computerUse: false,
+		forceDurable: true,
+		qualityClosure: false,
+	}),
+	full: Object.freeze({
+		name: "full",
+		experiment: true,
+		routing: true,
+		durable: true,
+		execution: true,
+		memory: true,
+		learning: true,
+		external: true,
+		computerUse: true,
+		forceDurable: true,
+		qualityClosure: true,
+	}),
+	"full-no-memory": Object.freeze({
+		name: "full-no-memory",
+		experiment: true,
+		routing: true,
+		durable: true,
+		execution: true,
+		memory: false,
+		learning: true,
+		external: true,
+		computerUse: true,
+		forceDurable: true,
+		qualityClosure: true,
+	}),
+	"full-no-learning": Object.freeze({
+		name: "full-no-learning",
+		experiment: true,
+		routing: true,
+		durable: true,
+		execution: true,
+		memory: true,
+		learning: false,
+		external: true,
+		computerUse: true,
+		forceDurable: true,
+		qualityClosure: true,
+	}),
+	"full-no-external": Object.freeze({
+		name: "full-no-external",
+		experiment: true,
+		routing: true,
+		durable: true,
+		execution: true,
+		memory: true,
+		learning: true,
+		external: false,
+		computerUse: true,
+		forceDurable: true,
+		qualityClosure: true,
+	}),
+	"full-no-computer": Object.freeze({
+		name: "full-no-computer",
+		experiment: true,
+		routing: true,
+		durable: true,
+		execution: true,
+		memory: true,
+		learning: true,
+		external: true,
+		computerUse: false,
+		forceDurable: true,
+		qualityClosure: true,
+	}),
+});
+
+export function resolvePiOneArchitectureProfile(env = process.env) {
+	const requested = String(env?.[EXPERIMENT_PROFILE_ENV] || "").trim().toLowerCase();
+	if (!requested) return PROFILE_DEFINITIONS["production-current"];
+	const profile = PROFILE_DEFINITIONS[requested];
+	if (!profile || !profile.experiment) throw new Error(`PI_ONE_EXPERIMENT_PROFILE_INVALID:${requested}`);
+	return profile;
+}
+
+export function experimentProfileNames() {
+	return Object.values(PROFILE_DEFINITIONS).filter((profile) => profile.experiment).map((profile) => profile.name);
+}
+
+export { EXPERIMENT_PROFILE_ENV };
