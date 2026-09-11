@@ -1,61 +1,30 @@
-# Pi-One Harness Preview
+# Pi-One — AI Agent Harness
 
-**A partial public source preview of Pi-One, an independently developed AI Agent Harness built on top of the open-source Pi ecosystem.**
+**An independently developed Harness for long-horizon AI Agent work, built on the open-source Pi ecosystem.**
 
-> **Preview status:** this repository is intentionally incomplete and is **not the current Pi-One development branch**. Active development is continuing on private development branches in the main Pi-One repository. The full public source will be regenerated from the converged latest baseline after that work is complete.
+Pi-One focuses on the engineering layer around capable models: **workflow orchestration, context and Skill routing, Worker responsibility, execution authority, recovery, Desktop/Remote convergence and evaluation**.
 
-This repository exists so reviewers can inspect representative Harness code without treating an in-progress development snapshot as a finished release.
+## Core ideas
 
-## What is included
+- **Long-horizon workflow:** Goal / Plan / Todo / Frontier state keeps multi-step work coherent.
+- **Dynamic context & Skill routing:** deeper capabilities are loaded according to task responsibility instead of every turn.
+- **Worker responsibility:** delegated work carries bounded scopes, authority and verification expectations.
+- **Recovery & continuation:** interrupted tasks can re-enter the same responsibility instead of restarting.
+- **Desktop / Remote convergence:** different product surfaces share one canonical Session/runtime model.
+- **MCP & multi-agent integration:** tools and sub-agents are capabilities inside one Harness.
+- **Evaluation-driven development:** A/B, held-out and adversarial evaluations compare routing, context and architecture changes.
 
-The preview exposes a small set of modules that illustrate the main engineering ideas:
+## Selected modules
 
-- `src/architecture-profile.mjs` — bounded architecture/profile selection.
-- `src/canonical-sources.mjs` — canonical Agent/Skill source discovery and identity handling.
-- `src/router.mjs` — responsibility- and metadata-oriented Skill/Context routing.
-- `src/policy/capability-surface.mjs` — capability/tool surface projection.
-- `src/workflow/continuation.mjs` — long-horizon continuation control.
-- `src/worker/authority.mjs` — Worker execution/authority contracts.
-- `src/worker/observability.mjs` — bounded Worker execution telemetry.
+- [`src/canonical-sources.mjs`](src/canonical-sources.mjs) — canonical Agent/Skill source discovery
+- [`src/router.mjs`](src/router.mjs) — responsibility-oriented routing
+- [`src/policy/capability-surface.mjs`](src/policy/capability-surface.mjs) — capability projection
+- [`src/workflow/continuation.mjs`](src/workflow/continuation.mjs) — long-running continuation
+- [`src/worker/authority.mjs`](src/worker/authority.mjs) — Worker execution authority
+- [`src/worker/observability.mjs`](src/worker/observability.mjs) — Worker telemetry
 
-Together they show the direction of Pi-One's Harness layer: keep simple work light, load deeper capabilities only when needed, preserve one canonical owner for state/authority, and make long-running Agent work observable and recoverable.
+## Technology
 
-## What is intentionally omitted
+**TypeScript / JavaScript · AI Agent Harness · Prompt & Context Engineering · MCP · Multi-Agent · Desktop/Remote · evaluation & observability**
 
-This preview does **not** currently publish:
-
-- the latest in-progress Pi-One runtime integration;
-- the complete Desktop / Remote convergence implementation;
-- the full Workflow / Worker implementation;
-- the complete test and evaluation corpus;
-- private experimental datasets or unpublished benchmark evidence;
-- local configuration, credentials, model-provider state, or development worklogs.
-
-Because those pieces are omitted, **this repository is not intended to be installed or built as a standalone Pi-One distribution**.
-
-## Project context
-
-Pi-One explores Harness-level problems that appear in long-horizon coding Agents, including:
-
-- context growth and repeated reacquisition;
-- Skill/tool routing and capability loading;
-- Goal / Plan / Todo continuation across long tasks;
-- Worker responsibility and execution authority;
-- Desktop / Remote state convergence;
-- evaluation, failure attribution, and human-reviewed promotion.
-
-The optimization target is not to add restrictions for their own sake. It is to reduce execution friction while keeping correctness, state ownership and high-impact authority explicit.
-
-## Upstream attribution
-
-Pi-One is built on top of open-source Pi / pi Desktop work. Upstream components retain their original authorship and licenses. This preview only presents selected Pi-One Harness-layer files and does not claim authorship of upstream projects.
-
-See [`NOTICE.md`](NOTICE.md) for attribution details.
-
-## Release plan
-
-Once the current private development/convergence work is finished, this preview will be superseded by a newly audited full public Pi-One repository generated from that final baseline.
-
-## License
-
-MIT. See [`LICENSE`](LICENSE).
+Pi-One builds on open-source Pi / pi Desktop work; upstream components retain their original authorship and licenses.
