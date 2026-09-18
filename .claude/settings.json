@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "env": {
+    "GIT_AUTHOR_NAME": "Patrickpoix",
+    "GIT_AUTHOR_EMAIL": "121714433+Patrickpoix@users.noreply.github.com",
+    "GIT_COMMITTER_NAME": "Patrickpoix",
+    "GIT_COMMITTER_EMAIL": "121714433+Patrickpoix@users.noreply.github.com"
+  },
+  "includeCoAuthoredBy": false
+}
