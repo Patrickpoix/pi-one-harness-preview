@@ -6,5 +6,23 @@
     "GIT_COMMITTER_NAME": "Patrickpoix",
     "GIT_COMMITTER_EMAIL": "121714433+Patrickpoix@users.noreply.github.com"
   },
-  "includeCoAuthoredBy": false
+  "includeCoAuthoredBy": false,
+  "attribution": {
+    "commit": "",
+    "pr": "",
+    "sessionUrl": false
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash -c 'r=\"${CLAUDE_PROJECT_DIR:-$PWD}\"; git -C \"$r\" rev-parse --is-inside-work-tree >/dev/null 2>&1 || exit 0; git -C \"$r\" config --local user.name Patrickpoix && git -C \"$r\" config --local user.email 121714433+Patrickpoix@users.noreply.github.com || exit 1; if [ -n \"${CLAUDE_ENV_FILE:-}\" ]; then printf \"%s\\n\" \"export GIT_AUTHOR_NAME=Patrickpoix\" \"export GIT_AUTHOR_EMAIL=121714433+Patrickpoix@users.noreply.github.com\" \"export GIT_COMMITTER_NAME=Patrickpoix\" \"export GIT_COMMITTER_EMAIL=121714433+Patrickpoix@users.noreply.github.com\" >> \"$CLAUDE_ENV_FILE\"; fi'",
+            "timeout": 15
+          }
+        ]
+      }
+    ]
+  }
 }
